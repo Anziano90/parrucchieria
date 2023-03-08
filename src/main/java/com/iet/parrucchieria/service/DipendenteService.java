@@ -1,6 +1,7 @@
 package com.iet.parrucchieria.service;
 
 import com.iet.parrucchieria.entity.Dipendente;
+import com.iet.parrucchieria.entity.Servizio;
 import com.iet.parrucchieria.repository.DipendenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,9 @@ public class DipendenteService {
 
     public void delete(Dipendente dipendente) {
         dipendenteRepository.delete(dipendente);
+    }
+
+    public List<Servizio> findAllServiziByDipendente(Long id) {
+        return dipendenteRepository.findAllServiziByDipendente(id);
     }
 }

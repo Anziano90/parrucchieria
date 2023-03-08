@@ -1,6 +1,7 @@
 package com.iet.parrucchieria.controller;
 
 import com.iet.parrucchieria.entity.Dipendente;
+import com.iet.parrucchieria.entity.Servizio;
 import com.iet.parrucchieria.service.DipendenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,34 @@ public class DipendenteController {
                 return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
             }
             return new ResponseEntity<>(dipendenteList, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/{id}/servizi")
+    public ResponseEntity<List<Servizio>> getAllServiziByDipendente(@PathVariable Long id){
+        try {
+            List<Servizio> servizioList = dipendenteService.findAllServiziByDipendente(id);
+            if(servizioList.isEmpty()){
+                return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(servizioList, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Dipendente> getDipendenteById(@PathVariable Long id){
+        Optional<Dipendente> existingDipendente = dipendenteService.findById(id);
+        try {
+            if(existingDipendente.isPresent()){
+                return new ResponseEntity<>(existingDipendente.get(), HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -82,5 +111,7 @@ public class DipendenteController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 
 }
