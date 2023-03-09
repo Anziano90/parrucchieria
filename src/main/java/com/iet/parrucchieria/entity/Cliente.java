@@ -46,7 +46,7 @@ public class Cliente {
     @Column
     private String indirizzo;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id_cliente")
     private List<Servizio> listaServizi = new ArrayList<>();
 

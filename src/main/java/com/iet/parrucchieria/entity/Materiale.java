@@ -37,7 +37,7 @@ public class Materiale {
     @LastModifiedDate
     @Column
     private Timestamp dataUltimaModifica;
-    @org.springframework.data.annotation.Version
+    @Version
     @Column
     private int versione;
 }

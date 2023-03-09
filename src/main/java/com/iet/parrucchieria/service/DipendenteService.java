@@ -13,7 +13,7 @@ import java.util.Optional;
 public class DipendenteService {
 
     @Autowired
-    DipendenteRepository dipendenteRepository;
+    private DipendenteRepository dipendenteRepository;
 
     public List<Dipendente> findAll() {
         return dipendenteRepository.findAll();

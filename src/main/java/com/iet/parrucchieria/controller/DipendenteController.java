@@ -17,7 +17,7 @@ import java.util.Optional;
 public class DipendenteController {
 
     @Autowired
-    DipendenteService dipendenteService;
+    private DipendenteService dipendenteService;
 
     @GetMapping
     public ResponseEntity<List<Dipendente>> getAllDipendenti(){

@@ -39,9 +39,11 @@ public class Dipendente {
     private String cf;
     @OneToMany(mappedBy = "dipendenteProprietario")
     private List<Materiale> listaMateriali = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id_dipendente")
     private List<Servizio> listaServizi = new ArrayList<>();
+
     @CreatedDate
     @Column
     private Timestamp dataCreazione;
