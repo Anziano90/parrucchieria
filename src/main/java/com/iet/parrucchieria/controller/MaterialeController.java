@@ -32,4 +32,6 @@ public class MaterialeController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    //TODO POST, PUT, DELETE
 }
