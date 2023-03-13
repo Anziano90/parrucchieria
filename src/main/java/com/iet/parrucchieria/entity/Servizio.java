@@ -21,11 +21,11 @@ public class Servizio {
     private Long id;
 
     @Basic
-    @Column(name = "nome", nullable = false, length = 255)
-    private String prezzo;
+    @Column(name = "prezzo", nullable = false)
+    private Double prezzo;
 
     @Basic
-    @Column(name = "prezzo", nullable = false)
+    @Column(name = "durata", nullable = false)
     private Integer durata;
 
     @ManyToOne

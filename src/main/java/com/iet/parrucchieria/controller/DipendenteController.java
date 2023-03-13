@@ -1,14 +1,19 @@
 package com.iet.parrucchieria.controller;
 
+import com.iet.parrucchieria.dto.DipendenteDTO;
 import com.iet.parrucchieria.entity.Dipendente;
 import com.iet.parrucchieria.entity.Servizio;
+import com.iet.parrucchieria.mapper.Mapper;
 import com.iet.parrucchieria.service.DipendenteService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +23,28 @@ public class DipendenteController {
 
     @Autowired
     private DipendenteService dipendenteService;
+    //private ModelMapper mapper = new ModelMapper();
+    //private Mapper mapper = new Mapper();
+
+/*
+    @GetMapping
+    public ResponseEntity<List<DipendenteDTO>> getAllDipendenti(){
+        try {
+            List<Dipendente> dipendenteList = dipendenteService.findAll();
+            List<DipendenteDTO> dipendenteListDTO = new ArrayList<>();
+            for(Dipendente d : dipendenteList){
+                DipendenteDTO dipendenteDTO = mapper.map(d, DipendenteDTO.class);
+                dipendenteListDTO.add(dipendenteDTO);
+            }
+            if(dipendenteList.isEmpty()){
+                return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(dipendenteListDTO, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }*/
+
 
     @GetMapping
     public ResponseEntity<List<Dipendente>> getAllDipendenti(){

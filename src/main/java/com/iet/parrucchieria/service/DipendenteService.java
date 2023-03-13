@@ -24,7 +24,7 @@ public class DipendenteService {
     }
 
     public Optional<Dipendente> findById(Long id) {
-        return dipendenteRepository.findById(id);
+        return dipendenteRepository.findByID(id);
     }
 
     public Dipendente save(Dipendente dipendente) {
